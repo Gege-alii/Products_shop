@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <div class="top-bar bg-black text-white text-center p-2">
+    <span>Summer Sale For All Swim Suits And Free Express Delivery - Off 50%! <a>Shop Now</a></span>
+    <span class="float-end me-3">
+      English <i class="fa-solid fa-chevron-down"></i>
+    </span>
+  </div>
+  
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Exclusive</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="/signup">Signup</a></li>
+        </ul>
+      </div>
+      <div class="d-flex align-items-center">
+        <div class="input-group me-3">
+          <input type="text" class="form-control position-relative" placeholder="What are you looking for?">
+          <span class=""><i class="fas fa-search position-absolute"></i></span>
+        </div>
+        <a class="nav-link" href="/wishlist">
+          <i class="fas fa-heart  me-3" style="font-size: 24px;"></i> 
+          <span class="badge bg-danger"  *ngIf="wishCount > 0">{{ wishCount }}</span>
+        </a>
+  
+  
+        <a class="nav-link" href="/cart">
+          <i class="fas fa-shopping-cart me-3" style="font-size: 24px;"></i>
+          <span class="badge bg-danger"  *ngIf="cartCount > 0">{{ cartCount }}</span>
+        </a>
+        <div class="dropdown">
+          <a href="#" class="d-flex align-items-center text-decoration-none" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user me-1 text-dark fs-5"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end bg-dark text-white" aria-labelledby="accountDropdown">
+            <li class="dropdown-item text-white">
+              <i class="fas fa-user me-2"></i> Manage My Account
+            </li>
+            <li class="dropdown-item text-white">
+              <i class="fas fa-box me-2"></i> My Order
+            </li>
+            <li class="dropdown-item text-white">
+              <i class="fas fa-times-circle me-2"></i> My Cancellations
+            </li>
+            <li class="dropdown-item text-white">
+              <i class="fas fa-star me-2"></i> My Reviews
+            </li>
+            <li class="dropdown-item text-white" (click)="logout()">
+              <i class="fas fa-sign-out-alt me-2" ></i> Logout
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  
+  <nav aria-label="breadcrumb" class="mt-5" style="margin-left: 100px;">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/account"  style="text-decoration: none; color: gray;">Account</a></li>
+        <li class="breadcrumb-item"><a href="/account"  style="text-decoration: none; color: gray;">My Account</a></li>
+        <li class="breadcrumb-item"><a href="/all-products"  style="text-decoration: none; color: gray;">Product</a></li>
+        <li class="breadcrumb-item"><a href="/cart"  style="text-decoration: none; color: gray;">View Cart</a></li>
+        <li class="breadcrumb-item active text-dark" aria-current="page">Checkout</li>
+    </ol>
+  </nav>
+
+
+<div class="container mt-5 mb-5">
+    <form>    
+    <div class="row">
+        <div class="col-md-7">
+            <div class="card border-0">
+                <div class="card-body">
+                <h6>Billing Details</h6>
+             
+                <div class="row checkout-form">
+                    <div class="col-md-8 mt-3">
+                        <label for="">First Name</label>
+                        <input type="text" class="form-control h-75 fname"  name="fname" value="">
+                        <span id="fname_error" class="text-danger py-5"></span>
+                    </div>
+                    <div class="col-md-8 mt-3">
+                        <label for="">Company Name</label>
+                        <input type="text" class="form-control h-75 Cname"  name="Cname" value="">
+                        <span id="Cname_error" class="text-danger py-5"></span>
+                    </div>
+                    <div class="col-md-8 mt-3">
+                        <label for="">Street Address</label>
+                        <input type="text" class="form-control h-75 address" name="address" value="">
+                        <span id="address_error"class="text-danger py-5"></span>
+                    </div>
+                    <div class="col-md-8 mt-3">
+                        <label for="">Apartment,Floor,etc (optional)</label>
+                        <input type="text" class="form-control  h-75 apartment"  name="apartment" value="">
+                        <span id="apartment_error"class="text-danger py-5"></span>
+                    </div>
+                    <div class="col-md-8 mt-3">
+                        <label for="">Town/City</label>
+                        <input type="text" class="form-control h-75 "  name="town" value="">
+                        <span id="town_error"class="text-danger py-5"></span>
+                    </div>
+                    <div class="col-md-8 mt-3">
+                        <label for="">Phone Number</label>
+                        <input type="text" class="form-control  h-75 phone"  name="Phone" value="">
+                        <span id="Phone_error"class="text-danger py-5"></span>
+                    </div>
+                    <div class="col-md-8 mt-3">
+                        <label for="">Email Address</label>
+                        <input type="text" class="form-control  h-75 email" name="email" value="">
+                        <span id="email_error"class="text-danger py-5"></span>
+                    </div>
+                    <div class="form-check custom-checkbox d-flex align-items-center mt-5">
+                      <input type="checkbox" class="form-check-input" id="saveInfo">
+                      <label class="form-check-label" for="saveInfo">Save this information for faster check-out next time</label>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+
+      
+
+        <div class="col-md-5">
+            <div class="card border-0">
+                <div class="card-body border-0">
+                    <table class="table" *ngFor="let product of cart">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <img [src]="product.image" alt="" height="70px" width="100px">                                
+                                </td>
+                                <td>{{ product.title }}</td>
+                                <td></td>
+                                <td class="pt-4">${{ product.price }}</td>
+                            </tr>
+                        
+                    </tbody>
+                </table>
+             
+                <div class="row align-items-center">
+                    <div class="col-12 d-flex align-items-center">
+                      <p>Subtotal: </p>
+                      <div class="ms-auto">
+                        <span class="justify-content-right value">${{ getTotalPrice() }}</span>
+                      </div>
+                    </div>
+                  </div>
+                 
+                  <hr class="mt-1">
+                  <div class="row align-items-center">
+                    <div class="col-12 d-flex align-items-center">
+                      <p>Shipping:</p>
+                      <div class="ms-auto">
+                        <span class="justify-content-right value">Free</span>
+                      </div>                    
+                    </div>                 
+                  </div>
+                  <hr class="mt-1">
+                  <div class="row align-items-center">
+                    <div class="col-12 d-flex align-items-center">
+                      <p>Total: </p>
+                      <div class="ms-auto">
+                        <span class="justify-content-right value">${{ getTotalPrice() }}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row align-items-center">
+                  <div class="payment-option col-12 d-flex align-items-center">
+                    <input type="radio" id="bank" name="payment" class="form-check-input radio">
+                    <label for="bank" class="form-check-label">Bank</label>
+                    <div class="payment-icons ms-auto justify-content-right">
+                      <img class="pe-2" src="data:image/png;base64,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" alt="Khalti">
+                      <img class="pe-2" src="data:image/png;base64,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" alt="Visa">
+                      <img  class="pe-2" src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="MasterCard">
+                      <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQuWWKXiKZ0S42TpVKScM88LPcmNO6h7kAqzzkZpbZ56klDoZ5q" alt="eSewa">
+                    </div>
+                  </div>
+                </div>
+                  
+                  <div class="payment-option">
+                    <input type="radio" id="cash" name="payment" class="form-check-input radio">
+                    <label for="cash" class="form-check-label">Cash on delivery</label>
+                  </div>
+          
+                  <div class="row mb-5">
+                    <div class="col-lg-12 mt-4 d-flex">
+                        <input type="text" class="form-control w-50" placeholder=" coupon code">
+                        <button class="btn btn-danger mb-2 ms-3 ">Apply Coupon</button>
+                      </div> 
+                  </div>
+                <button type="submit" class="btn btn-danger me-5 razorypay mb-5">Place Order</button>
+               <div id="paypal-button-container"></div>
+            </div>
+           </div> 
+        </div>
+    </div>
+    </form>
+</div>
+
+
+<!-- Footer Section -->
+<footer class="footer-dark">
+  <div class="container">
+    <div class="row footer">
+      <div class="col-md-3">
+        <h5>Exclusive</h5>
+        <p>Subscribe</p>
+        <p>Get 10% off your first order</p>
+        <form class="subscribe-form">
+          <div class="button-container py-2">
+            <button class="responsive-button ps-3">
+              Enter your email
+              <i class="fa-regular fa-paper-plane"></i> 
+            </button>
+        </div>
+        </form>
+      </div>
+      
+      <div class="col-md-3">
+        <h5>Support</h5>
+        <p>111 Bijoy sarani, Dhaka,<br> DH 1515, Bangladesh.</p>
+        <p>exclusivegmail.com</p>
+        <p>+88015-88888-9999</p>
+      </div>
+    
+      <div class="col-md-2">
+        <h5>Account</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">Login / Register</a></li>
+          <li><a href="#">Cart</a></li>
+          <li><a href="#">Wishlist</a></li>
+          <li><a href="#">Shop</a></li>
+        </ul>
+      </div>
+     
+      <div class="col-md-2">
+        <h5>Quick Link</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms Of Use</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="col-md-2">
+        <h5>Download App</h5>
+        <p>Save $3 with App New User Only</p>
+        <div class="d-flex mb-2">
+          <img src="assets/images/qr.png" alt="QR Code" class="me-2 w-50 h-25">
+          <div class="app-links">
+         <a> <img src="assets/images/googleplay.png" alt="Google Play" class="me-2 py-1 mb-3 border img-footer img-fluid w-100 "></a>
+         <a href="#"><img src="assets/images/app store.png" alt="App Store" class="border py-1  img-footer img-fluid w-100 "></a> 
+          </div>
+        </div>
+        <div class="social-icons text-center">
+          <a href="#" class="me-4"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="me-4"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="me-4"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-4">
+      <p>&copy; Copyright Rimel 2022. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

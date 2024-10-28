@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+</head>
+<body>
+  <div class="top-bar bg-black text-white text-center p-2">
+    <span>Summer Sale For All Swim Suits And Free Express Delivery - Off 50%! <a>Shop Now</a></span>
+    <span class="float-end me-3">
+      English <i class="fa-solid fa-chevron-down"></i>
+    </span>
+  </div>
+  
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Exclusive</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/about" routerLinkActive="active" style="text-decoration: underline;">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/signup" routerLinkActive="active">Signup</a>
+          </li>
+        </ul>
+      </div>
+      <div class="d-flex align-items-center">
+        <div class="input-group me-3">
+          <input type="text" class="form-control position-relative" placeholder="What are you looking for?">
+          <span class=""><i class="fas fa-search position-absolute"></i></span>
+        </div>
+        <a class="nav-link" href="/wishlist">
+          <i class="fas fa-heart  me-3" style="font-size: 24px;"></i> 
+          <span class="badge bg-danger"  *ngIf="wishCount > 0">{{ wishCount }}</span>
+        </a>
+  
+  
+        <a class="nav-link" href="/cart">
+          <i class="fas fa-shopping-cart me-3" style="font-size: 24px;"></i>
+          <span class="badge bg-danger"  *ngIf="cartCount > 0">{{ cartCount }}</span>
+        </a>
+        <div class="dropdown">
+          <a href="#" class="d-flex align-items-center text-decoration-none" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user me-1 text-dark fs-5"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end bg-dark text-white" aria-labelledby="accountDropdown">
+            <li class="dropdown-item text-white">
+              <i class="fas fa-user me-2"></i> Manage My Account
+            </li>
+            <li class="dropdown-item text-white">
+              <i class="fas fa-box me-2"></i> My Order
+            </li>
+            <li class="dropdown-item text-white">
+              <i class="fas fa-times-circle me-2"></i> My Cancellations
+            </li>
+            <li class="dropdown-item text-white">
+              <i class="fas fa-star me-2"></i> My Reviews
+            </li>
+            <li class="dropdown-item text-white" (click)="logout()">
+              <i class="fas fa-sign-out-alt me-2" ></i> Logout
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  
+  <nav aria-label="breadcrumb" class="mt-5" style="margin-left: 100px;">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/home"  style="text-decoration: none; color: gray;">Home</a></li>        
+        <li class="breadcrumb-item active text-dark" aria-current="page">About</li>
+    </ol>
+   </nav>
+
+
+  <section>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-6 d-flex align-items-center justify-content-center">
+      <div class="left-side">
+        <h1>Our Story</h1>
+        <p class="mt-4">
+          Launced in 2015, Exclusive is South Asia's premier online shopping makterplace with an active presense in Bangladesh. Supported by wide range of tailored marketing, data and service solutions, Exclusive has 10,500 sallers and 300 brands and serves 3
+          millioons customers across the region.
+          </p>
+          <p class="mt-2">Exclusive has more than 1 Million products to offer, growing at a very fast. Exclusive offers a diverse assotment in categories ranging from consumer.</p>
+      
+      </div>
+    </div>
+    <div class="col-md-6 mt-5 image-container">
+      <img src="assets/images/about.jpg" alt="LoginImage" class="img-fluid LoginImage">
+    </div>
+  </div>
+</div>
+</section>
+
+
+<section class="sec2 pt-5 route mt-5">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-3">
+        <div class="service-box mb-4 shadow-sm">
+          <div class="service-ico pt-4 text-center pb-2">
+            <span class="ico-circle"><i class="fa-solid fa-store"></i></span> 
+          </div>
+         
+          <div class="service-content">
+            <h2 class=" text-center  fs-2">10.5K</h2>
+            <p class=" text-center fs-6">
+             Sallers active our site
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="service-box  mb-4  shadow-sm">
+          <div class="service-ico pt-4 text-center pb-2">
+            <span class="ico-circle"><i class="fa-solid fa-dollar-sign"></i></span>
+          </div>
+          <div class="service-content ">
+            <h2 class=" text-center  fs-2">33K </h2>
+            <p class="fs-6 text-center">
+          Mopnthly product sale
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="service-box  mb-4  shadow-sm">
+          <div class="service-ico pt-4 text-center pb-2 ">
+            <span class="ico-circle"><i class="fa-solid fa-gift"></i></span>
+          </div>
+          <div class="service-content">
+            <h2 class=" text-center fs-2">45.5K</h2>
+            <p class="fs-6 text-center">
+           Customer active in our site
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <div class="service-box  mb-4 shadow-sm">
+          <div class="service-ico pt-4 text-center pb-2 ">
+            <span class="ico-circle"><i class="fa-solid fa-sack-dollar"></i></span>
+          </div>
+          <div class="service-content">
+            <h2 class=" text-center  fs-2">25K</h2>
+            <p class="fs-6 text-center">
+          Anual gross ale in our site
+            </p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+
+
+<div class="container mt-5 all-about-section">
+    <div class="row">
+     <div class="col-lg-4 col-md-4 col-sm-6">
+       <div class="about-card">
+         <div class="image-container2">
+           <img src="assets/images/about1.jpg" class="about-image" alt="">
+           
+         </div>
+         <div class="about-details">
+          <h4 class="pt-4">Tom Cruise</h4>
+          <p>Founder & Chairman</p>
+          <div class="social-icons1">
+              <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
+              <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+          </div>
+          
+         </div>
+       </div>
+     </div>
+
+
+     <div class="col-lg-4 col-md-4 col-sm-6">
+      <div class="about-card">
+        <div class="image-container2">
+          <img src="assets/images/about2.jpg" class="about-image" alt="">
+          
+        </div>
+        <div class="about-details">
+          <h4 class="pt-4">Emma Watson</h4>
+          <p>Managing Director</p>
+         <div class="social-icons1">
+             <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
+             <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+             <a href="#"><i class="fab fa-linkedin"></i></a>
+         </div>
+         
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-lg-4 col-md-4 col-sm-6">
+      <div class="about-card">
+        <div class="image-container2">
+          <img src="assets/images/about 3.jpg" class="about-image" alt="">
+          
+        </div>
+        <div class="about-details">
+          <h4 class="pt-4">Will Smith</h4>
+          <p>Product Designer</p>
+         <div class="social-icons1">
+             <a href="#" class="me-2"><i class="fab fa-twitter"></i></a>
+             <a href="#" class="me-2"><i class="fab fa-instagram"></i></a>
+             <a href="#"><i class="fab fa-linkedin"></i></a>
+         </div>
+         
+        </div>
+      </div>
+    </div>
+
+    <div class="dots">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot active"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+  </div>
+
+   </div>
+ </div>
+
+
+
+
+<section class="sec2 pt-5 route mt-5 mb-5">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-4">
+        <div class="service-box2 mb-4">
+          <div class="service-ico2 pt-4 text-center pb-2">
+            <span class="ico-circle2"><i class="fa-solid fa-truck"></i></span> 
+          </div>
+         
+          <div class="service-content">
+            <h2 class=" text-center  fs-5">FREE AND FAST DELIVER</h2>
+            <p class=" text-center fs-6">
+             Free delivery for all orders over $140
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="service-box2  mb-4  ">
+          <div class="service-ico2 pt-4 text-center pb-2">
+            <span class="ico-circle2"><i class="fa-solid fa-headphones"></i></span>
+          </div>
+          <div class="service-content ">
+            <h2 class=" text-center  fs-5">24/7 CUSTUMER SERVICE </h2>
+            <p class="fs-6 text-center">
+         Friendly 24/7 customer support            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-box2  mb-4  ">
+          <div class="service-ico2 pt-4 text-center pb-2 ">
+            <span class="ico-circle2"><i class="fa-solid fa-square-check"></i></span>
+          </div>
+          <div class="service-content">
+            <h2 class=" text-center fs-5">MONEY BACK GUARANTEE</h2>
+            <p class="fs-6 text-center">
+          We return money within 30 days
+            </p>
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+  </div>
+</section>
+
+
+<!-- Footer Section -->
+<footer class="footer-dark">
+  <div class="container">
+    <div class="row footer">
+      <div class="col-md-3">
+        <h5>Exclusive</h5>
+        <p>Subscribe</p>
+        <p>Get 10% off your first order</p>
+        <form class="subscribe-form">
+          <div class="button-container py-2">
+            <button class="responsive-button ps-3">
+              Enter your email
+              <i class="fa-regular fa-paper-plane"></i> 
+            </button>
+        </div>
+        </form>
+      </div>
+      
+      <div class="col-md-3">
+        <h5>Support</h5>
+        <p>111 Bijoy sarani, Dhaka,<br> DH 1515, Bangladesh.</p>
+        <p>exclusivegmail.com</p>
+        <p>+88015-88888-9999</p>
+      </div>
+    
+      <div class="col-md-2">
+        <h5>Account</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">Login / Register</a></li>
+          <li><a href="#">Cart</a></li>
+          <li><a href="#">Wishlist</a></li>
+          <li><a href="#">Shop</a></li>
+        </ul>
+      </div>
+     
+      <div class="col-md-2">
+        <h5>Quick Link</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms Of Use</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="col-md-2">
+        <h5>Download App</h5>
+        <p>Save $3 with App New User Only</p>
+        <div class="d-flex mb-2">
+          <img src="assets/images/qr.png" alt="QR Code" class="me-2 w-50 h-25">
+          <div class="app-links">
+         <a> <img src="assets/images/googleplay.png" alt="Google Play" class="me-2 py-1 mb-3 border img-footer img-fluid w-100 "></a>
+         <a href="#"><img src="assets/images/app store.png" alt="App Store" class="border py-1  img-footer img-fluid w-100 "></a> 
+          </div>
+        </div>
+        <div class="social-icons text-center">
+          <a href="#" class="me-4"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="me-4"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="me-4"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-4">
+      <p>&copy; Copyright Rimel 2022. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

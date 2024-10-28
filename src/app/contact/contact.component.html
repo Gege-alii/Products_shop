@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <div class="top-bar bg-black text-white text-center p-2">
+    <span>Summer Sale For All Swim Suits And Free Express Delivery - Off 50%! <a>Shop Now</a></span>
+    <span class="float-end me-3">
+      English <i class="fa-solid fa-chevron-down"></i>
+    </span>
+  </div>
+  
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Exclusive</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/contact" routerLinkActive="active" style="text-decoration: underline;">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/signup" routerLinkActive="active">Signup</a>
+          </li>
+        </ul>
+      </div>
+      <div class="d-flex align-items-center">
+        <div class="input-group me-3">
+          <input type="text" class="form-control position-relative" placeholder="What are you looking for?">
+          <span class=""><i class="fas fa-search position-absolute"></i></span>
+        </div>
+        <a class="nav-link" href="/wishlist">
+          <i class="fas fa-heart  me-3" style="font-size: 24px;"></i> 
+          <span class="badge bg-danger"  *ngIf="wishCount > 0">{{ wishCount }}</span>
+        </a>
+  
+  
+        <a class="nav-link" href="/cart">
+          <i class="fas fa-shopping-cart me-3" style="font-size: 24px;"></i>
+          <span class="badge bg-danger"  *ngIf="cartCount > 0">{{ cartCount }}</span>
+        </a>
+        <div class="dropdown">
+          <a href="#" class="d-flex align-items-center text-decoration-none" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user me-1 text-dark fs-5"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end bg-dark text-white" aria-labelledby="accountDropdown">
+            <li class="dropdown-item text-white">
+              <i class="fas fa-user me-2"></i> Manage My Account
+            </li>
+            <li class="dropdown-item text-white">
+              <i class="fas fa-box me-2"></i> My Order
+            </li>
+            <li class="dropdown-item text-white">
+              <i class="fas fa-times-circle me-2"></i> My Cancellations
+            </li>
+            <li class="dropdown-item text-white">
+              <i class="fas fa-star me-2"></i> My Reviews
+            </li>
+            <li class="dropdown-item text-white" (click)="logout()">
+              <i class="fas fa-sign-out-alt me-2" ></i> Logout
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  
+  <nav aria-label="breadcrumb" class="mt-5" style="margin-left: 150px;">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/home"  style="text-decoration: none; color: gray;">Home</a></li>        
+        <li class="breadcrumb-item active text-dark" aria-current="page">Contact</li>
+    </ol>
+   </nav>
+
+    <!-- Contact Section -->
+    <div class="container my-5 contact-section">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="contact-box p-5">
+              <h5><span> <i class="fas fa-phone-alt"></i></span> Call To Us</h5>
+              <p>We are available 24/7, 7 days a week.</p>
+              <p><strong>Phone:</strong> +880611112222</p>
+              <hr />
+      
+              <h5><span><i class="fas fa-envelope"></i></span> Write To Us</h5>
+              <p>Fill out our form and we will contact you within 24 hours.</p>
+              <p><strong>Emails:</strong> customerexclusive.com</p>
+              <p><strong>Emails:</strong> supportexclusive.com</p>
+            </div>
+          </div>
+    
+          <div class="col-md-8">
+            <div class="contact-box p-5">
+              <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <input type="text"
+                        class="form-control"
+                        id="name"
+                        placeholder="Enter your name *"
+                        required
+                        formControlName="name"
+                        name="name"
+                      />
+                      <div *ngIf="name?.touched && name?.invalid">
+                        <div *ngIf="name?.errors?.['required']" class="text-danger">Name is required</div>
+                        <div *ngIf="name?.errors?.['pattern']" class="text-danger">Name should only contain letters</div>
+                        <div *ngIf="name?.errors?.['minlength']" class="text-danger">Name must be at least 2 characters long</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        placeholder="Enter your email *"
+                        required
+                        formControlName="email"
+                        name="email"
+                      
+                      />
+                      <div *ngIf="email?.touched && email?.invalid">
+                        <div *ngIf="email?.errors?.['required']" class="text-danger">Email is required</div>
+                        <div *ngIf="email?.errors?.['email']" class="text-danger">Enter a valid email</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="phone"
+                        placeholder="Enter your phone *"
+                        required
+                        formControlName="phone"
+                        name="phone"
+                       
+                      />
+                      <div *ngIf="phone?.touched && phone?.invalid">
+                        <div *ngIf="phone?.errors?.['required']"class="text-danger">Phone number is required</div>
+                        <div *ngIf="phone?.errors?.['pattern']" class="text-danger">Phone number should be 10 digits</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+      
+                <div class="form-group pb-5">
+                  <textarea
+                    class="form-control"
+                    id="message"
+                    rows="4"
+                    placeholder="Enter your message"
+                    required
+                    formControlName="message"
+                    name="message"
+        
+                  ></textarea>
+                  <div *ngIf="message?.touched && message?.invalid">
+                    <div *ngIf="message?.errors?.['required']"class="text-danger">Message is required</div>
+                    <div *ngIf="message?.errors?.['minlength']" class="text-danger">Message must be at least 10 characters long</div>
+                  </div>
+                </div>
+      <div class="row align-items-center">
+                <div class=" mt-4  ms-auto">
+                  <button type="submit" class="btn btn-danger float-end " [disabled]="contactForm.invalid">Send Message</button>
+                </div>
+              </div>
+              </form>
+      
+              <div *ngIf="formStatus === 'success'" class="alert alert-success mt-4">
+                Thank you! Your message has been sent successfully.
+              </div>
+              <div *ngIf="formStatus === 'error'" class="alert alert-danger mt-4">
+                Oops! Something went wrong. Please try again later.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+        <!-- Footer Section -->
+<footer class="footer-dark mt-5">
+  <div class="container">
+    <div class="row footer">
+      <div class="col-md-3">
+        <h5>Exclusive</h5>
+        <p>Subscribe</p>
+        <p>Get 10% off your first order</p>
+        <form class="subscribe-form">
+          <div class="button-container py-2">
+            <button class="responsive-button ps-3">
+              Enter your email
+              <i class="fa-regular fa-paper-plane"></i> 
+            </button>
+        </div>
+        </form>
+      </div>
+      
+      <div class="col-md-3">
+        <h5>Support</h5>
+        <p>111 Bijoy sarani, Dhaka,<br> DH 1515, Bangladesh.</p>
+        <p>exclusivegmail.com</p>
+        <p>+88015-88888-9999</p>
+      </div>
+    
+      <div class="col-md-2">
+        <h5>Account</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">Login / Register</a></li>
+          <li><a href="#">Cart</a></li>
+          <li><a href="#">Wishlist</a></li>
+          <li><a href="#">Shop</a></li>
+        </ul>
+      </div>
+     
+      <div class="col-md-2">
+        <h5>Quick Link</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms Of Use</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="col-md-2">
+        <h5>Download App</h5>
+        <p>Save $3 with App New User Only</p>
+        <div class="d-flex mb-2">
+          <img src="assets/images/qr.png" alt="QR Code" class="me-2 w-50 h-25">
+          <div class="app-links">
+         <a> <img src="assets/images/googleplay.png" alt="Google Play" class="me-2 py-1 mb-3 border img-footer img-fluid w-100 "></a>
+         <a href="#"><img src="assets/images/app store.png" alt="App Store" class="border py-1  img-footer img-fluid w-100 "></a> 
+          </div>
+        </div>
+        <div class="social-icons text-center">
+          <a href="#" class="me-4"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="me-4"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="me-4"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-4">
+      <p>&copy; Copyright Rimel 2022. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+   
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+</head>
+<body>
+<div class="top-bar bg-black text-white text-center p-2">
+  <span>Summer Sale For All Swim Suits And Free Express Delivery - Off 50%! <a>Shop Now</a></span>
+  <span class="float-end me-3">
+    English <i class="fa-solid fa-chevron-down"></i>
+  </span>
+</div>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Exclusive</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="/signup">Signup</a></li>
+      </ul>
+    </div>
+    <div class="d-flex align-items-center">
+      <div class="input-group me-3">
+        <input type="text" class="form-control position-relative" placeholder="What are you looking for?">
+        <span class=""><i class="fas fa-search position-absolute"></i></span>
+      </div>
+      <a class="nav-link" href="/wishlist">
+        <i class="fas fa-heart  me-3" style="font-size: 24px;"></i> 
+        <span class="badge bg-danger"  *ngIf="wishCount > 0">{{ wishCount }}</span>
+      </a>
+
+
+      <a class="nav-link" href="/cart">
+        <i class="fas fa-shopping-cart me-3" style="font-size: 24px;"></i>
+        <span class="badge bg-danger"  *ngIf="cartCount > 0">{{ cartCount }}</span>
+      </a>
+      <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-decoration-none" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-user me-1 text-dark fs-5"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end bg-dark text-white" aria-labelledby="accountDropdown">
+          <li class="dropdown-item text-white">
+            <i class="fas fa-user me-2"></i> Manage My Account
+          </li>
+          <li class="dropdown-item text-white">
+            <i class="fas fa-box me-2"></i> My Order
+          </li>
+          <li class="dropdown-item text-white">
+            <i class="fas fa-times-circle me-2"></i> My Cancellations
+          </li>
+          <li class="dropdown-item text-white">
+            <i class="fas fa-star me-2"></i> My Reviews
+          </li>
+          <li class="dropdown-item text-white" (click)="logout()">
+            <i class="fas fa-sign-out-alt me-2" ></i> Logout
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<nav aria-label="breadcrumb" class="mt-5" style="margin-left: 150px;">
+  <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/account"  style="text-decoration: none; color: gray;">Account</a></li>  
+      <li class="breadcrumb-item" style="text-decoration: none; color: gray;">{{ product?.category }}</li>       
+      <li class="breadcrumb-item active text-dark" aria-current="page">{{ product?.title }}</li>
+  </ol>
+ </nav>
+
+
+
+<div class="container mt-5 product-details">
+    <div class="row">
+    
+      <div class="col-md-2">
+        <div *ngFor="let img of productImages" class="img-thumbnail mt-2">
+          <img [src]="product?.image" class="img-fluid small-img w-100" alt="product image">
+        </div>
+      </div>
+  
+     
+      <div class="col-md-5 text-center image-container2">
+        <img [src]="product?.image" class="img-fluid main-product-image product-image1" alt="product image">
+      </div>
+  
+     
+      <div class="col-md-5">
+        <h6>{{ product?.title }}</h6>
+        <div class="rating-section">
+          <span *ngFor="let star of [1,2,3,4,5]" class="fa fa-star" [class.checked]="star <= product?.rating?.rate"></span>
+          <span class="ms-2 text-success">| {{ product?.rating?.count > 0 ? 'In Stock' : 'Out of Stock' }}</span>
+        </div>
+        <h3 class="price">${{ product?.price | number:'1.2-2' }}</h3>
+        <p class="description">{{ product?.description }}</p>
+        <hr>
+  
+
+        <div class="colors-section">
+          <strong>Colours:</strong>
+          <span class="color-circle" *ngFor="let color of colors" [style.background]="color"></span>
+        </div>
+  
+     
+        <div class="sizes-section mt-3">
+          <strong>Size:</strong>
+          <span *ngFor="let size of sizes" class="size-box">{{ size }}</span>
+        </div>
+  
+        <div class="quantity-section mt-3">
+          <div class="quantity-selector">
+            <button (click)="decreaseQuantity()" class="btn btn-light border-right">-</button>
+            <span class="quantity">{{quantity }}</span>
+            <button (click)="increaseQuantity()" class="btn btn-light border-left">+</button>
+          </div>
+          <button class="btn btn-danger buy-now-btn px-5" [routerLink]="['/all-products']">Buy Now</button>
+          <i class="fas fa-heart wish-icon" (click)="addToWish(product)"></i>
+        </div>
+  
+  
+        <div class="delivery-info mt-3">
+          <div class="d-flex">
+          <i class="fas fa-truck pt-3"></i>
+     <p>  <span>Free Delivery</span>  <br> Enter your Postal code for Delivery Availability</p>
+        </div>
+          <hr>
+          <div class="d-flex">
+          <i class="fas fa-undo pt-3"></i>
+          <p><span> Return Delivery</span>  <br> Free 30 Days Delivery Returns. Details</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+
+
+    <!-- Related products -->
+    <div class="container mt-4 all-products-section">
+      <div class="row align-items-center mt-5 mb-5">
+        <div class="col-12 d-flex align-items-center mt-2">
+            <div class="red-square"></div>
+          <span class="ms-2" style="color: red;">Related item</span>
+          
+        </div>
+      </div>
+          <div class="row">
+           <div class="col-lg-3 col-md-4 col-sm-6" *ngFor="let product of relatedProducts">
+             <div class="product-card">
+               <div class="image-container">
+                 <img [src]="product.image" class="product-image" alt="{{ product.title }}">
+                 <div class="icons">
+                  <i class="fas fa-heart"  (click)="addToWish(product)"></i>
+
+                  <i class="fas fa-eye" (click)="viewProductDetails(product.id)"></i>
+                </div>
+                <button class="submit-btn" (click)="addToCart(product)">add to cart</button>
+               </div>
+               <div class="product-details">
+                 <h6 class="mt-2">{{ product.title }}</h6>
+                 <div class="prices mt-2">
+                   <span class="sale-price">${{ product.price - (product.price * 0.1) | number:'1.2-2' }}</span>
+                   <span class="original-price">${{ product.price | number:'1.2-2' }}</span>
+                 </div>
+                 <div class="rating mt-2">
+                   <i *ngFor="let star of [1,2,3,4,5]" class="fas fa-star" [class.checked]="star <= product.rating.rate"></i>
+                   <span class="ms-3">( {{ product.rating.rate }} )</span>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
+</div>
+
+       <!-- Footer Section -->
+<footer class="footer-dark mt-5">
+  <div class="container">
+    <div class="row footer">
+      <div class="col-md-3">
+        <h5>Exclusive</h5>
+        <p>Subscribe</p>
+        <p>Get 10% off your first order</p>
+        <form class="subscribe-form">
+          <div class="button-container py-2">
+            <button class="responsive-button ps-3">
+              Enter your email
+              <i class="fa-regular fa-paper-plane"></i> 
+            </button>
+        </div>
+        </form>
+      </div>
+      
+      <div class="col-md-3">
+        <h5>Support</h5>
+        <p>111 Bijoy sarani, Dhaka,<br> DH 1515, Bangladesh.</p>
+        <p>exclusivegmail.com</p>
+        <p>+88015-88888-9999</p>
+      </div>
+    
+      <div class="col-md-2">
+        <h5>Account</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">Login / Register</a></li>
+          <li><a href="#">Cart</a></li>
+          <li><a href="#">Wishlist</a></li>
+          <li><a href="#">Shop</a></li>
+        </ul>
+      </div>
+     
+      <div class="col-md-2">
+        <h5>Quick Link</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms Of Use</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      
+      <div class="col-md-2">
+        <h5>Download App</h5>
+        <p>Save $3 with App New User Only</p>
+        <div class="d-flex mb-2">
+          <img src="assets/images/qr.png" alt="QR Code" class="me-2 w-50 h-25">
+          <div class="app-links">
+         <a> <img src="assets/images/googleplay.png" alt="Google Play" class="me-2 py-1 mb-3 border img-footer img-fluid w-100 "></a>
+         <a href="#"><img src="assets/images/app store.png" alt="App Store" class="border py-1  img-footer img-fluid w-100 "></a> 
+          </div>
+        </div>
+        <div class="social-icons text-center">
+          <a href="#" class="me-4"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="me-4"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="me-4"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-4">
+      <p>&copy; Copyright Rimel 2022. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
