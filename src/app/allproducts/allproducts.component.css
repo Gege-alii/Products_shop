@@ -246,4 +246,23 @@ background-color: rgba(26, 23, 23, 0.714);
         margin-left: 20px;
       }
   }
+  @media (max-width: 991.98px) {
+    .navbar {
+        padding: 10px 20px; 
+    }
+    .navbar .nav-link {
+        margin-right: 10px; 
+    }
+    .navbar .input-group .form-control {
+        min-width: 180px; 
+    }
+  }
   
+  @media (max-width: 575.98px) {
+    .navbar {
+        padding: 10px 10px; 
+    }
+    .navbar .nav-link {
+        margin-right: 5px;
+    }
+  }

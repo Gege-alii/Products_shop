@@ -16,67 +16,64 @@
 
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Exclusive</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/home" routerLinkActive="active" style="text-decoration: underline;">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/signup" routerLinkActive="active">Signup</a>
-              </li>
-            </ul>
-          </div>
-          <div class="d-flex align-items-center">
-            <div class="input-group me-1">
-              <input type="text" class="form-control position-relative" placeholder="What are you looking for?">
-              <span class=""><i class="fas fa-search position-absolute"></i></span>
+            <a class="navbar-brand" href="#">Exclusive</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/home" routerLinkActive="active" style="text-decoration: underline;">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/about" routerLinkActive="active">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="/signup" routerLinkActive="active">Signup</a>
+                    </li>
+                </ul>
             </div>
-            <a class="nav-link" href="/wishlist">
-              <i class="fas fa-heart  me-3" style="font-size: 24px;"></i> 
-              <span class="badge bg-danger"  *ngIf="wishCount > 0">{{ wishCount }}</span>
-            </a>
-
-
-            <a class="nav-link" href="/cart">
-              <i class="fas fa-shopping-cart me-3" style="font-size: 24px;"></i>
-              <span class="badge bg-danger"  *ngIf="cartCount > 0">{{ cartCount }}</span>
-            </a>
-            <div class="dropdown">
-              <a href="#" class="d-flex align-items-center text-decoration-none" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fas fa-user me-1"></i>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end bg-dark text-white" aria-labelledby="accountDropdown">
-                <li class="dropdown-item text-white">
-                  <i class="fas fa-user me-2"></i> Manage My Account
-                </li>
-                <li class="dropdown-item text-white">
-                  <i class="fas fa-box me-2"></i> My Order
-                </li>
-                <li class="dropdown-item text-white">
-                  <i class="fas fa-times-circle me-2"></i> My Cancellations
-                </li>
-                <li class="dropdown-item text-white">
-                  <i class="fas fa-star me-2"></i> My Reviews
-                </li>
-                <li class="dropdown-item text-white" (click)="logout()">
-                  <i class="fas fa-sign-out-alt me-2" ></i> Logout
-                </li>
-              </ul>
-            
-          </div>
-          </div>
+            <div class="d-flex align-items-center">
+                <div class="input-group me-1">
+                    <input type="text" class="form-control position-relative" placeholder="What are you looking for?">
+                    <span class=""><i class="fas fa-search position-absolute"></i></span>
+                </div>
+                <a class="nav-link" href="/wishlist">
+                    <i class="fas fa-heart me-3" style="font-size: 24px;"></i>
+                    <span class="badge bg-danger" *ngIf="wishCount > 0">{{ wishCount }}</span>
+                </a>
+                <a class="nav-link" href="/cart">
+                    <i class="fas fa-shopping-cart me-3" style="font-size: 24px;"></i>
+                    <span class="badge bg-danger" *ngIf="cartCount > 0">{{ cartCount }}</span>
+                </a>
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center text-decoration-none" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user me-1"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end bg-dark text-white" aria-labelledby="accountDropdown">
+                        <li class="dropdown-item text-white">
+                            <i class="fas fa-user me-2"></i> Manage My Account
+                        </li>
+                        <li class="dropdown-item text-white">
+                            <i class="fas fa-box me-2"></i> My Order
+                        </li>
+                        <li class="dropdown-item text-white">
+                            <i class="fas fa-times-circle me-2"></i> My Cancellations
+                        </li>
+                        <li class="dropdown-item text-white">
+                            <i class="fas fa-star me-2"></i> My Reviews
+                        </li>
+                        <li class="dropdown-item text-white" (click)="logout()">
+                            <i class="fas fa-sign-out-alt me-2"></i> Logout
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </nav>
+    </nav>
       
 <!-- Section 1 -->
       <div class="section1">
@@ -119,33 +116,34 @@
           <div class="red-square"></div>
           <span class="ms-2" style="color: red;">Today's</span>
         </div>
-        <div class="col-12 d-flex align-items-center mt-2">
-          <h2 class="me-5">Flash Sales</h2>
+        <div class="col-12 d-flex align-items-center mt-2 cl"> 
+          <h2 class="me-3">Flash Sales</h2>
           <div class="time-item text-center">
-            <span>Days</span>
-            <div>03</div>
+              <span>Days</span>
+              <div>03</div>
           </div>
           <div class="colon">:</div>
           <div class="time-item text-center">
-            <span>Hours</span>
-            <div>23</div>
+              <span>Hours</span>
+              <div>23</div>
           </div>
           <div class="colon">:</div>
           <div class="time-item text-center">
-            <span>Minutes</span>
-            <div>19</div>
+              <span>Minutes</span>
+              <div>19</div>
           </div>
           <div class="colon">:</div>
           <div class="time-item text-center">
-            <span>Seconds</span>
-            <div>56</div>
+              <span>Seconds</span>
+              <div>56</div>
           </div>
-       
+          
           <div class="ms-auto">
-            <i class="fas fa-arrow-left arrow-icon" (click)="prev()"></i>
-            <i class="fas fa-arrow-right arrow-icon" (click)="next()"></i>
+              <i class="fas fa-arrow-left arrow-icon" (click)="prev()"></i>
+              <i class="fas fa-arrow-right arrow-icon" (click)="next()"></i>
           </div>
-        </div>
+      </div>
+      
       </div>
   
    
