@@ -37,9 +37,15 @@
                 </ul>
             </div>
             <div class="d-flex align-items-center">
-                <div class="input-group me-1">
-                    <input type="text" class="form-control position-relative" placeholder="What are you looking for?">
+                <div class="input-group me-1 position-relative">
+                    <input type="text" class="form-control position-relative" placeholder="What are you looking for?" [(ngModel)]="searchQuery" (input)="onSearch()" [readonly]="!userId">
                     <span class=""><i class="fas fa-search position-absolute"></i></span>
+                    <div *ngIf="searchResults.length > 0" class="dropdown-menu show">
+                      <a *ngFor="let result of searchResults" class="dropdown-item" (click)="viewProductDetails(result.id)">
+                        <img [src]="result.image" alt="Product Image" class="result-image" />
+                        <span>{{ result.title }}</span>
+                      </a>
+                    </div>
                 </div>
                 <a class="nav-link" href="/wishlist">
                     <i class="fas fa-heart me-3" style="font-size: 24px;"></i>

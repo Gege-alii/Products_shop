@@ -32,6 +32,9 @@ export class HomeComponent implements OnInit{
   userId: string | null = null;
   isVisible: boolean = false;
   isBeforeFooter: boolean = false;
+  searchQuery: string = '';
+  searchResults: any[] = [];
+  productsall: any[] = [];
 
   showScrollBtn = false;
   @HostListener('window:scroll', [])
@@ -114,7 +117,10 @@ export class HomeComponent implements OnInit{
       
     });
 
-
+    this.userId = this.authService.getUserId();
+    this.http.get('https://fakestoreapi.com/products').subscribe((data: any) => {
+      this.productsall = data;
+    });
 
     this.userId = this.authService.getUserId();
     if (!this.userId) {
@@ -125,6 +131,24 @@ export class HomeComponent implements OnInit{
     }
     
   }
+
+  onSearch(): void {
+    if (!this.userId) {
+      this.showLoginAlert();
+      return;
+    }
+
+    const query = this.searchQuery.toLowerCase();
+    this.searchResults = this.productsall.filter((productsall: any) =>
+      productsall.title.toLowerCase().includes(query)
+    );
+  }
+
+  viewProductDetails(productId: number): void {
+    this.router.navigate(['/product', productId]);
+  }
+
+ 
 
   updateCartCount(): void {
     if (this.userId) {
@@ -160,12 +184,6 @@ export class HomeComponent implements OnInit{
   prev() {
     const slider = document.querySelector('.product-slider') as HTMLElement;
     slider.scrollLeft -= slider.offsetWidth;
-  }
-
-  viewProductDetails(productId: number): void {
-  
-    this.router.navigate(['/product', productId]); 
-    
   }
 
   logout(): void {
